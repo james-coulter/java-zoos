@@ -9,21 +9,21 @@ import java.util.List;
 
 @Entity
 @Table(name = "animal")
-public class Animal extends Auditable{
+public class Animal extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long animalid;
 
-    @Column(nullable = false, unique = true)
+//    @Column(nullable = false, unique = true)
     private String animaltype;
 
-    @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "animal",
+            cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = "animal")
     private List<ZooAnimals> zooAnimals = new ArrayList<>();
 
-    public Animal(){
-
+    public Animal() {
     }
 
     public Animal(String animaltype) {
@@ -50,7 +50,7 @@ public class Animal extends Auditable{
         return zooAnimals;
     }
 
-    public void setZooAnimals(List<ZooAnimals> zooAnimals) {
-        this.zooAnimals = zooAnimals;
+    public void setZooAnimals(List<ZooAnimals> zooanimals) {
+        this.zooAnimals = zooanimals;
     }
 }
